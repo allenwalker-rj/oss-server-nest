@@ -35,6 +35,9 @@ $ yarn install
 ## Running the app
 
 ```bash
+# build
+$ yarn build
+
 # development
 $ yarn run start
 
@@ -45,28 +48,29 @@ $ yarn run start:dev
 $ yarn run start:prod
 ```
 
-## Test
+## Config
 
 ```bash
-# unit tests
-$ yarn run test
+# location
+/src/config/oss.ts
 
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
+# oss accessKeyId
+accessKeyId: "accessKeyId",
+# oss accessKeySecret
+accessKeySecret: "accessKeySecret",
+# oss bucket example 'my-bucket-name'
+bucket: "bucket",
+# oss region example 'oss-cn-hangzhou'
+region: "region",
 ```
 
 ## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+[NestJs 官网](https://nestjs.com/)
 
-## Stay in touch
+[OSS Node.js API](https://help.aliyun.com/zh/oss/developer-reference/installation-7?spm=a2c4g.11186623.0.i22)
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+[OSS Node.js GitHub](https://github.com/ali-sdk/ali-oss)
 
 ## License
 
