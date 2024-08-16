@@ -9,6 +9,12 @@ import { OssDeleteDto } from "./dto/OssDeleteDto";
 @Controller("oss")
 export class OssController {
     constructor(private readonly ossService: OssService) {}
+
+    @Get("listBuckets")
+    listBuckets(@Query("prefix") prefix: string) {
+        return this.ossService.listBuckets(prefix);
+    }
+
     @Post("upload")
     @UseInterceptors(FileInterceptor("file"))
     upload(@UploadedFile() file: Express.Multer.File, @Body() dto: OssUploadFileDto) {

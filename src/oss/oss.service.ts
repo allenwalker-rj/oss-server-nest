@@ -20,6 +20,15 @@ export class OssService {
         });
     }
 
+    async listBuckets(prefix: string) {
+        const result = this.isNotEmptyString(prefix)
+            ? // 列举当前账号所有地域下指定前缀的存储空间。
+              await this.client.listBuckets({ prefix: prefix })
+            : // 列举当前账号所有地域下的存储空间。
+              await this.client.listBuckets();
+        return result;
+    }
+
     async putOssFile(file: any, dto: OssUploadFileDto) {
         const { path } = dto;
         if (!this.isNotEmptyString(path)) {
