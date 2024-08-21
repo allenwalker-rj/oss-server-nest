@@ -15,6 +15,11 @@ export class OssController {
         return this.ossService.listBuckets(prefix);
     }
 
+    @Get("bucketExist")
+    bucketIsExist(@Query("bucketName") bucketName: string) {
+        return this.ossService.bucketIsExist(bucketName);
+    }
+
     @Post("upload")
     @UseInterceptors(FileInterceptor("file"))
     upload(@UploadedFile() file: Express.Multer.File, @Body() dto: OssUploadFileDto) {

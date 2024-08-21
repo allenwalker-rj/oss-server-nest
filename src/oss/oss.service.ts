@@ -29,6 +29,25 @@ export class OssService {
         return result;
     }
 
+    async bucketIsExist(bucketName: string) {
+        if (!this.isNotEmptyString(bucketName)) {
+            return { code: 500, msg: "bucketName not allow empty" };
+        }
+        try {
+            // 指定存储空间名称。
+            const result = await this.client.getBucketInfo(bucketName);
+            console.log("bucketInfo: ", result.bucket);
+            return result?.bucket;
+        } catch (error) {
+            // 判断指定的存储空间是否存在。
+            if (error.name === "NoSuchBucketError") {
+                return { code: 200, msg: "Bucket does not exist" };
+            } else {
+                console.log(error);
+            }
+        }
+    }
+
     async putOssFile(file: any, dto: OssUploadFileDto) {
         const { path } = dto;
         if (!this.isNotEmptyString(path)) {
